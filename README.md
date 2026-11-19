@@ -2,7 +2,7 @@
   <img src="assets/generic-pc.png" width="240" alt="macOS Generic PC CRT BSOD Icon" />
 </p>
 
-<h1 align="center">change-windows-icon</h1>
+<h1 align="center">macos-finder-windows-icon</h1>
 
 <p align="center">
   Replace the infamous 1990s CRT Blue Screen of Death (<code>public.generic-pc</code>) icon in macOS Finder with the modern Apple display icon used for NAS and Bonjour SMB servers — without disabling SIP.
@@ -27,7 +27,7 @@ When macOS discovers network shares in Finder:
 
 Because `CoreTypes.bundle` is protected by System Integrity Protection (SIP), modifying system `.icns` files directly is neither safe nor persistent across macOS updates.
 
-Instead, `change-windows-icon` runs a lightweight, zero-dependency background agent (`LaunchAgent`) that:
+Instead, `macos-finder-windows-icon` runs a lightweight, zero-dependency background agent (`LaunchAgent`) that:
 1. Monitors NetBIOS-discovered hosts (`_netbios._udp`) registered by `netbiosd`.
 2. Filters out hosts that already advertise native Bonjour SMB (`_smb._tcp.local.`) on physical network interfaces.
 3. Resolves the IPv4 address of each Windows host via `smbutil lookup`.
@@ -42,8 +42,8 @@ Finder automatically merges the NetBIOS entry with the LocalOnly `_smb._tcp.loca
 Clone the repository and run the installer script:
 
 ```bash
-git clone https://github.com/laserbirdx/change-windows-icon.git
-cd change-windows-icon
+git clone https://github.com/laserbirdx/macos-finder-windows-icon.git
+cd macos-finder-windows-icon
 chmod +x install.sh uninstall.sh
 ./install.sh
 ```
